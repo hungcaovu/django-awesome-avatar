@@ -7,7 +7,7 @@ from awesome_avatar import forms
 try:
     from cStringIO import StringIO
 except ImportError:
-    from io import StringIO
+    from io import BytesIO as StringIO
 
 try:
     from PIL import Image
@@ -42,7 +42,6 @@ class AvatarField(models.ImageField):
         # if data and self.width and self.height:
         file_ = data['file']
         if file_:
-
             image = Image.open(StringIO(file_.read()))
             image = image.crop(data['box'])
             image = image.resize((self.width, self.height), Image.ANTIALIAS)

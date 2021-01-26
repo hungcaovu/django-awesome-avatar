@@ -9,8 +9,10 @@ class AvatarWidget(FileInput):
 
     def value_from_datadict(self, data, files, name):
         value = {}
+        
         value['file'] = super(AvatarWidget, self).value_from_datadict(data, files, name)
-
+        if value['file']:
+            value['name'] = value['file'].name
         x1 = data.get(name + '-x1', 0)
         y1 = data.get(name + '-y1', 0)
         x2 = data.get(name + '-x2', x1)

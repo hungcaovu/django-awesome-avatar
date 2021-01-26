@@ -15,6 +15,8 @@ class AvatarField(forms.ImageField):
     def to_python(self, data):
         super(AvatarField, self).to_python(data['file'])
         return data
+    def run_validators(self, value):
+        super(AvatarField, self).run_validators(value['file'])
 
     def widget_attrs(self, widget):
         return {'width': self.width, 'height': self.height}
