@@ -50,7 +50,7 @@ class AvatarWidget(FileInput):
             image_type = image.content_type # png or jpeg or something else
             context.update({'image_b64': str(image_b64, 'utf8'), 'image_type': image_type, 'avatar_url': None})
         else:
-            context['avatar_url'] = value.url if value  else '/static/awesome_avatar/default.png'
+            context['avatar_url'] = value.url if value  else None
         context['id'] = attrs.get('id', 'id_' + name)
         # todo fix HACK
         context['STATIC_URL'] = settings.STATIC_URL
